@@ -1,16 +1,4 @@
-FIBONACCI SERIES
-
-To write a program to find the Fibonacci sequence of the given number using R.
- 
-Algorithm
-1.	Take the input from the user.
-2.	Initialize, n1=0 and n2=1 and count=1.
-3.	If the input is less than or equal to zero then print “Please enter a positive integer”.
-4.	Else print Fibonacci sequence for the given input.
-5.	Use a while to find next term in the sequence.
-6.	Inside the while loop, print the first two terms n1 and n2.
-7.	Then calculate the next term nth by adding the last two term and print it.
-Source Code
+FIBONACCI SERIES-----------------------------------------------------------------------------------------------------
 nterms <- as.integer(readline(prompt="How many terms? ")) n1 = 0
 n2 = 1
 count = 2 if(nterms <= 0) {
@@ -39,7 +27,7 @@ count = count + 1
 
 
 
-Working with R Data types	Page No: Date:
+Working with R Data types	Page No: Date:--------------------------------------------------------------------------------------------------------
 
 
 #Logical data type
@@ -98,7 +86,7 @@ print(BMI)
 
 
 
-#Data import
+#Data import------------------------------------------------------------------------------------------------------
 install.packages("readxl") library("readxl")
 excel<-read_xlsx("student.xlsx",sheet=1) excel
 #csv file
@@ -118,7 +106,7 @@ write.xlsx(rate,file="G:/R/fruits.xlsx")
 
 
 
-# Bar Plot or Bar Chart
+# Bar Plot or Bar Chart------------------------------------------------------------------------------------------------------------------------
 
 x <- c(7, 15, 23, 12, 44, 56, 32)
 
@@ -145,14 +133,17 @@ col.axis = "yellow")
 
 
 
-CLUSTERING TECHNIQUES- FINDING NUMBER OF CLUSTERS
+CLUSTERING TECHNIQUES- FINDING NUMBER OF CLUSTERS--------------------------------------------------------------------------
  
 
 data1.s<-scale(data1[-1:-3]) data1.s
 ?dist
-d<-dist(data1.s) options(max.print=1000000) d
-k1<-kmeans(data1.s,1) k1
-k1$cluster library(ggplot2) library(factoextra)
+d<-dist(data1.s) options(max.print=1000000)
+d
+k1<-kmeans(data1.s,1)
+k1
+k1$cluster library(ggplot2)
+library(factoextra)
 fviz_nbclust(data1.s,kmeans,method="wss")
 
 
@@ -160,7 +151,7 @@ fviz_nbclust(data1.s,kmeans,method="wss")
 
 
 
-CLUSTERING TECHNIQUES- KMEANS ALGORITHM
+CLUSTERING TECHNIQUES- KMEANS ALGORITHM-------------------------------------------------------------------------------------------------------------
  
 install.packages('stats') install.packages('dplyr') install.packages('ggplot2') install.packages('readxl')
 library('stats') library('dplyr') library('ggplot2') library('ggfortify') library('readxl')
@@ -203,16 +194,22 @@ sno	name	english	math	science
 
 
 
-A)	LINEAR REGRESSION
+A)	LINEAR REGRESSION-----------------------------------------------------------------------------------------------------
  
 
 a<-c(151,174,138,186,128,136,179,163,152,131) b<-c(63,81,56,91,47,57,76,72,62,48)
 relation<-lm(b~a)
-a<-data.frame(a=170) result<-predict(relation,a) print(result)
+a<-data.frame(a=170)
+result<-predict(relation,a) 
+print(result)
 
-install.packages('readxl') library('readxl')
-ads<-read.csv('d:/advertising.csv') View(ads)
-nrow(ads) ncol(ads) colnames(ads) 
+install.packages('readxl')
+library('readxl')
+ads<-read.csv('d:/advertising.csv')
+View(ads)
+nrow(ads) 
+ncol(ads)
+colnames(ads) 
 Tv<-ads$TV 
 Sales<-ads$Sales 
 plot(Tv,Sales)
@@ -224,12 +221,15 @@ coef(model)
 abline(model)
 
 
-B)	LOGISTIC REGRESSION
+B)	LOGISTIC REGRESSION-----------------------------------------------------------------------------------
 
-sex<-puffinbill$sex curlen<-puffinbill$curlen
+
+sex<-puffinbill$sex 
+curlen<-puffinbill$curlen
 sexcode<-ifelse(sex == "F",1,0)
 plot(curlen, jitter(sexcode, 0.15), pch = 19, xlab = "Bill length (mm)", ylab = "Sex (0 - male, 1 - female)")
-model<- glm(sexcode~curlen, binomial) summary(model)
+model<- glm(sexcode~curlen, binomial) 
+summary(model)
 xv<- seq(min(curlen),max(curlen),0.01)
 yv<- predict(model,list(curlen=xv),type="response") lines(xv, yv, col = "red")
 library(popbio)
@@ -239,14 +239,21 @@ logi.hist.plot(curlen,sexcode,boxp = FALSE,type= "count",col="gray",xlabel = "si
 
 
 
-
-install.packages("e1071") install.packages("caTools") install.packages("caret") library(e1071) library(caTools) library(caret) library(ggplot2)
+Navie Bayes--------------------------------------------------------------
+install.packages("e1071")
+install.packages("caTools")
+install.packages("caret") 
+library(e1071)
+library(caTools)
+library(caret)
+library(ggplot2)
 split <- sample.split(iris, SplitRatio = 0.7)
 train_cl <- subset(iris, split == "TRUE")
 test_cl <- subset(iris, split == "FALSE") 
 train_scale <- scale(train_cl[, 1:4]) 
 test_scale <- scale(test_cl[, 1:4])
-set.seed(120) # Setting Seed
+set.seed(120) 
+# Setting Seed
 classifier_cl <- naiveBayes(Species ~ ., data = train_cl)
 classifier_cl
 y_pred <- predict(classifier_cl, newdata = test_cl)
@@ -277,7 +284,7 @@ print(result) rpart.plot(tree)
 
 
 
-TIME SERIES ANALYSIS-ARIMA MODEL
+TIME SERIES ANALYSIS-ARIMA MODEL--------------------------------------------------------------
  
 
 install.packages('forecast') library(forecast)
@@ -307,7 +314,8 @@ abline(a=0, b=0)
 hist(arima_2$residuals, xlab="Residuals", xlim=c(-20,20))
  
 
-qqnorm(arima_2$residuals, main="") qqline(arima_2$residuals)
+qqnorm(arima_2$residuals, main="") 
+qqline(arima_2$residuals)
 #Forecasting
 #predict the next 12 months
 ?predict()
@@ -327,21 +335,27 @@ lines(arima_2.predict$pred-1.96*arima_2.predict$se, col=4, lty=2)
 
 
 
-TEXT ANALYSIS	Page No:
+TEXT ANALYSIS	------------------------------------------------------------------------------------------
  
 
 
-#Term Frequency(TF) tf<-function(row){
+#Term Frequency(TF) 
+tf<-function(row){
 return(row/sum(row))
 }
 #Inverse Document Frequency(IDF)
 idf<-function(col){
 return(log10(length(col)/length(which(col>0))))
 }
-#Term Frequency - Inverse Document Frequency(TF-IDF) tfidf<-function(token.matrix){
-tf<-t(apply(token.matrix,1,tf)) idf<-apply(token.matrix,2,idf) return(tf*idf)
+#Term Frequency - Inverse Document Frequency(TF-IDF)
+tfidf<-function(token.matrix){
+tf<-t(apply(token.matrix,1,tf))
+idf<-apply(token.matrix,2,idf)
+return(tf*idf)
 }
-#Testing the Function install.packages("tm") library(tm)
+#Testing the Function
+install.packages("tm")
+library(tm)
 text<-c("A dog and a cat","The dog is barking","The cat is on the wall")
 corp<-Corpus(VectorSource(text))
 #Finding the tokens
@@ -353,7 +367,32 @@ tfidf(doc.tokens)
 
 
 
-SQL ESSENTIALS IN R
+
+APRIORI ALGORITHM-----------------------------------------------------------------------------------
+
+install.packages("arules") install.packages('arulesViz') library(arules) library(arulesViz)
+data("Groceries")
+summary(Groceries)
+apriori(Groceries,parameter = list(support=0.002,confidence=0.5)) ->rule1
+inspect(head(rule1,10))
+inspect(head(sort(rule1,by="lift"),5)) 
+plot(rule1)
+plot(rule1,method = "grouped")
+apriori(Groceries,parameter = list(support=0.002,confidence=0.5,minlen=3)) ->rule2 
+inspect(head(rule2,7))
+plot(rule2)
+plot(rule2,method = "grouped")
+apriori(Groceries,parameter = list(support=0.007,confidence=0.6)) ->rule3
+inspect(head(rule3,4))
+plot(rule3,method = "grouped")
+
+
+
+
+
+
+
+SQL ESSENTIALS IN R------------------------------------------------------------------------------------------------------------
  
 
 
@@ -366,7 +405,10 @@ View(Book1)
 View(Book2)
 View(Book3)
 #Set_Operations
-sqldf("SELECT * FROM Book1 UNION SELECT * FROM Book2") sqldf("SELECT * FROM Book1 UNION ALL SELECT * FROM Book2") sqldf("SELECT * FROM Book1 INTERSECT SELECT * FROM Book2") sqldf("SELECT * FROM Book1 EXCEPT SELECT * FROM Book2")
+sqldf("SELECT * FROM Book1 UNION SELECT * FROM Book2")
+sqldf("SELECT * FROM Book1 UNION ALL SELECT * FROM Book2")
+sqldf("SELECT * FROM Book1 INTERSECT SELECT * FROM Book2")
+sqldf("SELECT * FROM Book1 EXCEPT SELECT * FROM Book2")
 #Join_Operations
 
 sqldf("SELECT Book1.Name,Book3.College FROM Book1 INNER JOIN Book3 ON Book1.Id=Book3.Id")
@@ -375,11 +417,13 @@ sqldf("SELECT Book1.Name,Book3.College FROM Book1 FULL OUTER JOIN Book3 ON Book1
 
 sqldf("SELECT Book1.Name,Book3.College FROM Book1 LEFT OUTER JOIN Book3 ON Book1.Id=Book3.Id")
 sqldf("SELECT Book1.Name,Book3.College FROM Book1 RIGHT OUTER JOIN Book3 ON Book1.Id=Book3.Id")
-#Grouping_Extensions Book4<- read_csv("Book4.csv") View(Book4)
+#Grouping_Extensions 
+Book4<- read_csv("Book4.csv") 
+View(Book4)
 sqldf("SELECT Department,SUM(Salary) as Salary FROM Book4 GROUP BY Department")
 sqldf("SELECT Department,Category,SUM(Salary) as Salary FROM Book4 GROUP BY Department, Category")
 sqldf("SELECT Department,SUM(Salary) as Salary FROM Book4 GROUP BY Department HAVING SUM(Salary) = 25000")
-sqldf("SELECT Department,Category,SUM(Salary) as Salary FROM Book4 GROUP BY Department, C
+sqldf("SELECT Department,Category,SUM(Salary) as Salary FROM Book4 GROUP BY Department, Category HAVING SUM(salary) = 50000")
 
 
 
@@ -387,7 +431,7 @@ sqldf("SELECT Department,Category,SUM(Salary) as Salary FROM Book4 GROUP BY Depa
 
 
 
-SENTIMENTAL ANALYSIS	
+SENTIMENTAL ANALYSIS	---------------------------------------------------------------------------------------------
 install.packages("tm") install.packages("wordcloud") install.packages("syuzhet") library(tm) library(wordcloud) library(syuzhet)
 reviews<-read.csv(file.choose(),header=1) 
 str(reviews)
@@ -405,7 +449,8 @@ reviews_final <- corpus
 tdm <- TermDocumentMatrix(reviews_final) 
 tdm <- as.matrix(tdm)
 tdm[1:10,1:10]
-w <- sort(rowSums(tdm),decreasing = T) set.seed(2000)
+w <- sort(rowSums(tdm),decreasing = T)
+set.seed(2000)
 wordcloud(words = names(w), freq = w, max.words=50, random.order = T,min.freq=5, colors=brewer.pal(25,"Dark2"), scale = c(5,0.5))
 sentiment_data <- iconv(reviews$text)
 s <- get_nrc_sentiment(sentiment_data)
@@ -424,7 +469,7 @@ barplot(colSums(s),las =2, col=rainbow(10), ylab='Count', main='Sentiment')
 
 
 
-ADVANCED SQL COMMANDS
+ADVANCED SQL COMMANDS----------------------------------------------------------------------------------------
  
 create table employees1(id int,name varchar(30),salary int,age int,location varchar(30),mobile int);
 insert into employees1 values(101,'Suka',50000,22,'Palayamkottai',8667897130); insert into employees1 values(102,'Saran',40000,25,'Tuticorin',9807654321); insert into employees1 values(103,'Priya',30000,29,'Tirunelveli',8765432190); insert into employees1 values(104,'Hari',20000,24,'Chennai',9678543210);
