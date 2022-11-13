@@ -10,3 +10,29 @@ fviz_nbclust(df,kmeans,method="wss")
 km <- kmeans(df,center=4,nstart = 25)
 km
 fviz_cluster(km,data = df)
+
+
+binary--------------------------------------------------------------------------------------------------------
+
+bisearch = function(table,key){
+  stopifnot(is.vector(table),is.numeric(table))
+  r = length(table)
+  m = ceiling(r/2L)
+  if(table[m]>key){
+    if(r==1L){
+      return(FALSE)
+    }
+    bisearch(table[1L:(m-1L)],key)
+  }
+  else if(table[m]<key){
+    if(r == 1L){
+      return(FALSE)
+    }
+    bisearch(table[(m+1L):r],key)
+  }
+  else{
+    return(TRUE)
+  }
+}
+n<-as.integer(readline(prompt = "enter n value"))
+bisearch(c(1,2,3,4,5,6),n)
