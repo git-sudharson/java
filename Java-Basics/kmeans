@@ -1,0 +1,12 @@
+install.packages("factoextra")
+install.packages("cluster")
+library(factoextra)
+library(cluster)
+df=USAccDeaths
+df=na.omit(df)
+df=scale(df)
+head(df)
+fviz_nbclust(df,kmeans,method="wss")
+km <- kmeans(df,center=4,nstart = 25)
+km
+fviz_cluster(km,data = df)
